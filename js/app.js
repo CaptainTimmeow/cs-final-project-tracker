@@ -1,416 +1,430 @@
-// ── Configuration ─────────────────────────────────────────────
-const STORAGE_KEY = 'cs_tracker_dates_v1';
-const DEFAULT_LAUNCH = '2026-04-27';
-const DEFAULT_FINAL = '2026-05-29';
+const STORAGE_KEY = "cs-final-project-tracker-v2";
 
-// ── Data: Phase definitions ───────────────────────────────────
-function getPhases(launchStr, finalStr) {
-    const launch = new Date(launchStr);
-    const final = new Date(finalStr);
-    const addDays = (d, n) => new Date(d.getTime() + n * 864e5);
-    const span = (final - launch) / 4;
-
-    return [
-        {
-            id: 'launch',
-            title: '1. Project Launch',
-            subtitle: 'Choose a problem & pitch your idea',
-            illustration: 'assets/phase-illustrations/phase-launch.svg',
-            start: launch,
-            end: addDays(launch, Math.floor(span / 864e5)),
-            tasks: [
-                'Pick a realistic project idea',
-                'Define the problem in one sentence',
-                'Identify target user',
-                'List 3 core features + 1 MVP feature',
-                'Submit Mini PRD (Canvas)',
-                'Set up Obsidian project vault'
-            ]
-        },
-        {
-            id: 'mvp',
-            title: '2. MVP Planning & Build',
-            subtitle: 'Scope your MVP & get feature #1 working',
-            illustration: 'assets/phase-illustrations/phase-mvp.svg',
-            start: addDays(launch, Math.floor(span / 864e5)),
-            end: addDays(launch, Math.floor(2 * span / 864e5)),
-            tasks: [
-                'Break project into features, files, functions',
-                'Ask AI for one small feature at a time',
-                'Build and run feature #1',
-                'Test with sample inputs',
-                'Write down one bug or blocker',
-                'Bring best prompt to class'
-            ]
-        },
-        {
-            id: 'sprint',
-            title: '3. Build Sprint & Debug',
-            subtitle: 'Strengthen prototype & fix serious bugs',
-            illustration: 'assets/phase-illustrations/phase-sprint.svg',
-            start: addDays(launch, Math.floor(2 * span / 864e5)),
-            end: addDays(launch, Math.floor(3 * span / 864e5)),
-            tasks: [
-                'Get at least one usable feature working',
-                'Add error handling (try/except)',
-                'Test edge cases',
-                'Refactor messy code with AI help',
-                'Keep AI tracker log updated',
-                'Prepare 60-second show-and-tell'
-            ]
-        },
-        {
-            id: 'polish',
-            title: '4. Polish & Feedback',
-            subtitle: 'Demo, peer review, and revise',
-            illustration: 'assets/phase-illustrations/phase-polish.svg',
-            start: addDays(launch, Math.floor(3 * span / 864e5)),
-            end: addDays(launch, Math.floor(3.8 * span / 864e5)),
-            tasks: [
-                'Deliver 60-second mini demo',
-                'Collect warm/cool feedback',
-                'Fix issues from feedback',
-                'Add README with run instructions',
-                'Prepare sample data if needed',
-                'Practice final presentation'
-            ]
-        },
-        {
-            id: 'present',
-            title: '5. Final Presentation',
-            subtitle: 'Ship it & present to class',
-            illustration: 'assets/phase-illustrations/phase-present.svg',
-            start: addDays(launch, Math.floor(3.8 * span / 864e5)),
-            end: final,
-            tasks: [
-                'Submit final code package (Canvas)',
-                '5-minute demo to class',
-                'Explain what the program does',
-                'Explain how main logic works',
-                'Show what AI helped with & what you changed',
-                'Share what you would build next'
-            ]
-        }
-    ];
-}
-
-// ── Data: Project types ───────────────────────────────────────
-const PROJECT_TYPES = [
+const PHASES = [
     {
-        id: 'game',
-        name: 'Game',
-        desc: 'Quiz, adventure, puzzle',
-        examples: ['Text Adventure', 'Quiz Game', 'Number Strategy', 'Trivia App']
+        id: "ideation",
+        number: 1,
+        title: "Ideation",
+        fullTitle: "1. Ideation",
+        subtitle: "Define the problem and settle on a project direction.",
+        dates: "Apr 28 - May 11, 2025",
+        shortDates: "Apr 28 - May 11",
+        status: "done",
+        tasks: [
+            { label: "Identify a project problem worth solving", date: "Apr 28", done: true },
+            { label: "Research examples and constraints", date: "Apr 30", done: true },
+            { label: "List possible solution ideas", date: "May 2", done: true },
+            { label: "Compare ideas and choose one direction", date: "May 5", done: true },
+            { label: "Write a one-paragraph project pitch", date: "May 8", done: true },
+            { label: "Confirm project scope with teacher", date: "May 11", done: true }
+        ],
+        highlights: ["Problem statement approved", "Project idea selected"]
     },
     {
-        id: 'productivity',
-        name: 'Productivity',
-        desc: 'Timers, trackers, tools',
-        examples: ['Study Timer', 'Task Tracker', 'File Renamer', 'Habit Logger']
+        id: "design",
+        number: 2,
+        title: "Design",
+        fullTitle: "2. Design",
+        subtitle: "You're designing the solution and planning how everything will work.",
+        dates: "May 12 - May 25, 2025",
+        shortDates: "May 12 - May 25",
+        status: "current",
+        milestone: "Design Review  •  May 19, 2025",
+        timeRemaining: "6 days",
+        phasePercent: 60,
+        tasks: [
+            { label: "Define problem and project goals", date: "May 12", done: true },
+            { label: "Brainstorm and evaluate ideas", date: "May 13", done: true },
+            { label: "Create project plan", date: "May 14", done: false },
+            { label: "Design system architecture / structure", date: "May 18", done: false },
+            { label: "Design user interface / experience", date: "May 21", done: false },
+            { label: "Prepare for design review", date: "May 19", done: false }
+        ],
+        highlights: ["Goals locked", "System plan in progress"]
     },
     {
-        id: 'data',
-        name: 'Data',
-        desc: 'Analyze & visualize',
-        examples: ['Grade Calculator', 'Workout Tracker', 'Reading Log', 'Expense Analyzer']
+        id: "implementation",
+        number: 3,
+        title: "Implementation",
+        fullTitle: "3. Implementation",
+        subtitle: "Build the core features and validate the main workflow.",
+        dates: "May 26 - Jun 22, 2025",
+        shortDates: "May 26 - Jun 22",
+        status: "upcoming",
+        tasks: [
+            { label: "Set up the project repository and structure", date: "May 26", done: false },
+            { label: "Build the primary user flow", date: "May 30", done: false },
+            { label: "Implement data storage or state logic", date: "Jun 4", done: false },
+            { label: "Connect supporting views and navigation", date: "Jun 10", done: false },
+            { label: "Test the core path end to end", date: "Jun 16", done: false }
+        ],
+        highlights: ["Core build", "Feature completion"]
     },
     {
-        id: 'api',
-        name: 'API',
-        desc: 'Fetch & display data',
-        examples: ['Weather Checker', 'Movie Lookup', 'Exchange Rate', 'News Reader']
+        id: "testing",
+        number: 4,
+        title: "Testing",
+        fullTitle: "4. Testing",
+        subtitle: "Find issues, refine the experience, and make the project stable.",
+        dates: "Jun 23 - Jul 6, 2025",
+        shortDates: "Jun 23 - Jul 6",
+        status: "upcoming",
+        tasks: [
+            { label: "Run usability and bug-testing sessions", date: "Jun 24", done: false },
+            { label: "Fix critical bugs and polish rough edges", date: "Jun 28", done: false },
+            { label: "Improve error handling and empty states", date: "Jul 2", done: false },
+            { label: "Prepare test evidence and notes", date: "Jul 6", done: false }
+        ],
+        highlights: ["Bug fixing", "Polish pass"]
     },
     {
-        id: 'creative',
-        name: 'Creative',
-        desc: 'Generate & transform',
-        examples: ['Story Generator', 'Playlist Helper', 'Pixel Art Converter', 'Quote Maker']
-    },
-    {
-        id: 'automation',
-        name: 'Automation',
-        desc: 'Scripts & organizers',
-        examples: ['Folder Organizer', 'Filename Cleaner', 'Batch Helper', 'File Sorter']
+        id: "finalization",
+        number: 5,
+        title: "Finalization",
+        fullTitle: "5. Finalization",
+        subtitle: "Package the work, rehearse the demo, and submit the project.",
+        dates: "Jul 7 - Jul 20, 2025",
+        shortDates: "Jul 7 - Jul 20",
+        status: "upcoming",
+        tasks: [
+            { label: "Finalize documentation and README", date: "Jul 8", done: false },
+            { label: "Record or rehearse the final presentation", date: "Jul 12", done: false },
+            { label: "Submit project files and reflection", date: "Jul 17", done: false },
+            { label: "Deliver the final presentation", date: "Jul 20", done: false }
+        ],
+        highlights: ["Submission", "Final presentation"]
     }
 ];
 
-// ── Helpers ───────────────────────────────────────────────────
-function loadDates() {
+const PROJECT_TYPES = {
+    app: {
+        label: "App",
+        resources: [
+            "App Project Guide",
+            "UI Design Best Practices",
+            "Data & Storage Options",
+            "API Integration Checklist"
+        ]
+    },
+    game: {
+        label: "Game",
+        resources: [
+            "Game Loop Planning Guide",
+            "Level Design Checklist",
+            "Player Feedback Patterns",
+            "Game Testing Session Template"
+        ]
+    },
+    research: {
+        label: "Research",
+        resources: [
+            "Question Framing Worksheet",
+            "Source Evaluation Guide",
+            "Data Collection Template",
+            "Presentation Storyline Outline"
+        ]
+    },
+    other: {
+        label: "Other",
+        resources: [
+            "Project Scope Checklist",
+            "Milestone Planning Template",
+            "Teacher Review Prep",
+            "Final Demo Readiness Guide"
+        ]
+    }
+};
+
+function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return JSON.parse(saved);
-    return { launch: DEFAULT_LAUNCH, final: DEFAULT_FINAL };
-}
-
-function saveDates() {
-    const launch = document.getElementById('launchDateInput').value;
-    const final = document.getElementById('finalDateInput').value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ launch, final }));
-    renderAll();
-}
-
-function getCurrentPhaseIndex(phases) {
-    const now = new Date();
-    for (let i = 0; i < phases.length; i++) {
-        if (now >= phases[i].start && now < phases[i].end) return i;
-        if (i === phases.length - 1 && now >= phases[i].start) return i;
+    if (saved) {
+        return JSON.parse(saved);
     }
-    if (now < phases[0].start) return -1;
-    return phases.length;
-}
 
-function fmtDate(d) {
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-
-function setRingProgress(percent) {
-    const circle = document.getElementById('ringCircle');
-    if (!circle) return;
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (percent / 100) * circumference;
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = offset;
-}
-
-// ── Render: Hero ──────────────────────────────────────────────
-function renderHero(phases, currentIndex) {
-    const badge = document.getElementById('statusBadge');
-    const task = document.getElementById('currentTask');
-    const desc = document.getElementById('taskDesc');
-    const count = document.getElementById('countdown');
-    const illustration = document.getElementById('heroIllustration');
-    const percentEl = document.getElementById('ringPercent');
-
-    const now = new Date();
-    const totalDuration = phases[phases.length - 1].end - phases[0].start;
-    const elapsed = Math.min(Math.max(now - phases[0].start, 0), totalDuration);
-    const pct = Math.round((elapsed / totalDuration) * 100);
-
-    // Update linear progress bar
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = pct + '% complete';
-
-    // Update ring
-    setRingProgress(pct);
-    if (percentEl) percentEl.textContent = pct + '%';
-
-    // Update hero text & illustration
-    if (currentIndex >= 0 && currentIndex < phases.length) {
-        const p = phases[currentIndex];
-        badge.className = 'status-badge active';
-        badge.textContent = 'Active Phase';
-        task.textContent = p.title;
-        desc.textContent = p.subtitle;
-        if (illustration) { illustration.src = p.illustration; illustration.style.display = 'block'; }
-
-        const daysLeft = Math.ceil((p.end - now) / 864e5);
-        count.innerHTML = `⏰ <span>${daysLeft}</span> day${daysLeft !== 1 ? 's' : ''} left &nbsp;|&nbsp; Ends <span>${fmtDate(p.end)}</span>`;
-    } else if (currentIndex === -1) {
-        badge.className = 'status-badge upcoming';
-        badge.textContent = 'Not Started';
-        task.textContent = 'Project Launch Coming Soon';
-        desc.textContent = 'Get ready to choose your project idea.';
-        if (illustration) { illustration.src = phases[0].illustration; illustration.style.display = 'block'; }
-        const daysUntil = Math.ceil((phases[0].start - now) / 864e5);
-        count.innerHTML = `🚀 Launch in <span>${daysUntil}</span> day${daysUntil !== 1 ? 's' : ''}`;
-    } else {
-        badge.className = 'status-badge done';
-        badge.textContent = 'Complete';
-        task.textContent = 'Project Finished';
-        desc.textContent = 'All phases complete. Great work!';
-        if (illustration) { illustration.src = phases[phases.length - 1].illustration; illustration.style.display = 'block'; }
-        count.innerHTML = '';
-    }
-}
-
-// ── Render: Roadmap ───────────────────────────────────────────
-function renderRoadmap(phases, currentIndex) {
-    const svg = document.getElementById('roadmapSvg');
-    if (!svg) return;
-
-    const nodes = svg.querySelectorAll('.node');
-    const path = svg.getElementById('roadmapPath');
-    const marker = svg.getElementById('youAreHere');
-
-    const totalLength = 640;
-    let activeLength = 0;
-
-    nodes.forEach((node, idx) => {
-        node.classList.remove('done', 'active', 'future');
-        if (idx < currentIndex) {
-            node.classList.add('done');
-            activeLength += totalLength / 4;
-        } else if (idx === currentIndex) {
-            node.classList.add('active');
-            activeLength += (totalLength / 4) * 0.5;
-        } else {
-            node.classList.add('future');
-        }
-
-        // Click to expand phase
-        node.onclick = () => {
-            const phaseEl = document.getElementById(`phase-${idx}`);
-            if (phaseEl) {
-                phaseEl.classList.add('open');
-                phaseEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        };
-    });
-
-    // Animate path fill
-    if (path) {
-        path.style.strokeDasharray = totalLength;
-        path.style.strokeDashoffset = totalLength;
-        requestAnimationFrame(() => {
-            path.style.transition = 'stroke-dashoffset 1s ease';
-            path.style.strokeDashoffset = totalLength - activeLength;
+    const checklist = {};
+    PHASES.forEach((phase) => {
+        phase.tasks.forEach((task, taskIndex) => {
+            checklist[`${phase.id}:${taskIndex}`] = task.done;
         });
-    }
-
-    // Position "You Are Here" marker
-    if (marker && currentIndex >= 0 && currentIndex < phases.length) {
-        const positions = [80, 240, 400, 560, 720];
-        marker.style.display = 'block';
-        marker.setAttribute('transform', `translate(${positions[currentIndex]}, 38)`);
-    } else if (marker) {
-        marker.style.display = 'none';
-    }
-}
-
-// ── Render: Timeline / Phases ─────────────────────────────────
-function renderTimeline(phases, currentIndex) {
-    const timeline = document.getElementById('timeline');
-    timeline.innerHTML = '';
-
-    phases.forEach((p, idx) => {
-        const isCurrent = idx === currentIndex;
-        const isDone = idx < currentIndex;
-
-        const div = document.createElement('div');
-        div.className = 'phase' + (isCurrent ? ' open' : '');
-        div.id = `phase-${idx}`;
-
-        // Check if all tasks are complete
-        const allChecked = p.tasks.every((_, i) => localStorage.getItem(`${p.id}_task${i}`) === '1');
-        if (allChecked) div.classList.add('all-complete');
-
-        div.innerHTML = `
-            <div class="phase-header" onclick="togglePhase(${idx})">
-                <div class="phase-illustration-sm">
-                    <img src="${p.illustration}" alt="${p.title}" loading="lazy">
-                </div>
-                <div class="phase-meta">
-                    <div class="phase-title">
-                        ${isDone ? '✅' : isCurrent ? '▶️' : '⏳'} ${p.title}
-                    </div>
-                    <div class="phase-subtitle">${p.subtitle}</div>
-                </div>
-                <span class="phase-date">${fmtDate(p.start)} – ${fmtDate(p.end)}</span>
-                <span class="phase-toggle">▼</span>
-            </div>
-            <div class="phase-content">
-                <ul class="checklist" data-phase="${p.id}">
-                    ${p.tasks.map((t, i) => `
-                        <li>
-                            <input type="checkbox" id="${p.id}_task${i}" 
-                                ${localStorage.getItem(`${p.id}_task${i}`) === '1' ? 'checked' : ''} 
-                                onchange="onTaskCheck('${p.id}', ${i}, ${idx})">
-                            <label for="${p.id}_task${i}">${t}</label>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        `;
-        timeline.appendChild(div);
     });
+
+    return {
+        selectedType: "app",
+        checklistView: "this-phase",
+        checklist
+    };
 }
 
-function togglePhase(idx) {
-    const el = document.getElementById(`phase-${idx}`);
-    if (el) el.classList.toggle('open');
+let state = loadState();
+
+function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-function onTaskCheck(phaseId, taskIdx, phaseIdx) {
-    const key = `${phaseId}_task${taskIdx}`;
-    const checked = document.getElementById(key).checked;
-    localStorage.setItem(key, checked ? '1' : '0');
-
-    // Check if all tasks in this phase are now complete
-    const phaseEl = document.getElementById(`phase-${phaseIdx}`);
-    const inputs = phaseEl.querySelectorAll('.checklist input');
-    const allChecked = Array.from(inputs).every(inp => inp.checked);
-    if (allChecked) {
-        phaseEl.classList.add('all-complete');
-    } else {
-        phaseEl.classList.remove('all-complete');
-    }
+function getCurrentPhase() {
+    return PHASES.find((phase) => phase.status === "current") || PHASES[0];
 }
 
-// ── Render: Project Types ─────────────────────────────────────
-function renderProjectTypes() {
-    const grid = document.getElementById('typeGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    PROJECT_TYPES.forEach(type => {
-        const card = document.createElement('div');
-        card.className = 'type-card';
-        card.onclick = () => showTypeExamples(type.id);
-        card.innerHTML = `
-            <svg><use href="assets/icons/sprite.svg#icon-${type.id}"></use></svg>
-            <h4>${type.name}</h4>
-            <p>${type.desc}</p>
-        `;
-        grid.appendChild(card);
-    });
+function getTaskDone(phaseId, taskIndex) {
+    return Boolean(state.checklist[`${phaseId}:${taskIndex}`]);
 }
 
-function showTypeExamples(typeId) {
-    const type = PROJECT_TYPES.find(t => t.id === typeId);
-    if (!type) return;
+function setTaskDone(phaseId, taskIndex, done) {
+    state.checklist[`${phaseId}:${taskIndex}`] = done;
+    saveState();
+}
 
-    // Toggle active state on cards
-    document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
-    const activeCard = Array.from(document.querySelectorAll('.type-card')).find(
-        c => c.querySelector('h4').textContent === type.name
+function getPhaseCompletion(phase) {
+    const doneCount = phase.tasks.filter((task, index) => getTaskDone(phase.id, index)).length;
+    return {
+        doneCount,
+        totalCount: phase.tasks.length
+    };
+}
+
+function getOverallCompletion() {
+    const totalCount = PHASES.reduce((sum, phase) => sum + phase.tasks.length, 0);
+    const doneCount = PHASES.reduce(
+        (sum, phase) => sum + phase.tasks.filter((task, index) => getTaskDone(phase.id, index)).length,
+        0
     );
-    if (activeCard) activeCard.classList.add('active');
 
-    const examples = document.getElementById('typeExamples');
-    examples.innerHTML = `
-        <h4>${type.name} Project Ideas</h4>
-        <ul>
-            ${type.examples.map(ex => `<li>${ex}</li>`).join('')}
-        </ul>
+    return {
+        doneCount,
+        totalCount,
+        percent: Math.round((doneCount / totalCount) * 100)
+    };
+}
+
+function renderCurrentPhase() {
+    const phase = getCurrentPhase();
+    const completion = getPhaseCompletion(phase);
+
+    document.getElementById("phaseTitle").textContent = phase.fullTitle;
+    document.getElementById("phaseDescription").textContent = phase.subtitle;
+    document.getElementById("phaseDates").textContent = phase.dates;
+    document.getElementById("milestone").textContent = phase.milestone || "Next review to be scheduled";
+    document.getElementById("timeRemaining").textContent = phase.timeRemaining || "On track";
+    document.getElementById("phasePercent").textContent = `${phase.phasePercent || 0}%`;
+    document.getElementById("phaseBar").style.width = `${phase.phasePercent || 0}%`;
+    document.getElementById("phaseTaskSummary").textContent = `${completion.doneCount} of ${completion.totalCount} complete`;
+
+    const footerLabel =
+        state.checklistView === "this-phase"
+            ? `${completion.doneCount} of ${completion.totalCount} complete`
+            : `${getOverallCompletion().doneCount} of ${getOverallCompletion().totalCount} complete`;
+    document.getElementById("checklistFooter").textContent = footerLabel;
+
+    const miniTaskList = document.getElementById("miniTaskList");
+    miniTaskList.innerHTML = "";
+
+    phase.tasks.slice(0, 3).forEach((task, index) => {
+        const li = document.createElement("li");
+        const done = getTaskDone(phase.id, index);
+        li.className = done ? "done" : "";
+        li.innerHTML = `
+            <span class="task-check ${done ? "checked" : ""}"></span>
+            <span>${task.label}</span>
+        `;
+        miniTaskList.appendChild(li);
+    });
+}
+
+function renderProgress() {
+    const overall = getOverallCompletion();
+    const ring = document.getElementById("progressRing");
+    ring.style.setProperty("--p", overall.percent);
+    document.getElementById("progressNumber").textContent = `${overall.percent}%`;
+}
+
+function renderRoadmap() {
+    const roadmap = document.getElementById("roadmap");
+    roadmap.innerHTML = "";
+
+    PHASES.forEach((phase) => {
+        const item = document.createElement("div");
+        item.className = `roadmap-item ${phase.status}`;
+        item.innerHTML = `
+            <div class="roadmap-node">${phase.number}</div>
+            ${phase.status === "done" ? '<div class="roadmap-check">✓</div>' : ""}
+            <div class="roadmap-name">${phase.title}</div>
+            <div class="roadmap-date">${phase.shortDates}</div>
+        `;
+        roadmap.appendChild(item);
+    });
+}
+
+function checklistRowsForPhase(phase) {
+    return phase.tasks
+        .map((task, index) => {
+            const done = getTaskDone(phase.id, index);
+            return `
+                <div class="checklist-row" data-phase="${phase.id}" data-index="${index}">
+                    <button class="${done ? "done" : ""}" type="button" aria-label="Toggle ${task.label}"></button>
+                    <div class="checklist-task ${done ? "done" : ""}">${task.label}</div>
+                    <div class="checklist-date">${task.date}</div>
+                    <div class="checklist-arrow">
+                        <svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg>
+                    </div>
+                </div>
+            `;
+        })
+        .join("");
+}
+
+function renderChecklist() {
+    const currentPhase = getCurrentPhase();
+    const table = document.getElementById("checklistTable");
+
+    if (state.checklistView === "this-phase") {
+        table.innerHTML = checklistRowsForPhase(currentPhase);
+    } else {
+        table.innerHTML = PHASES.map((phase) => {
+            return `
+                <div class="checklist-group">
+                    <div class="checklist-group-title">
+                        <div></div>
+                        <div>${phase.fullTitle}</div>
+                        <div>${phase.shortDates}</div>
+                        <div></div>
+                    </div>
+                    ${checklistRowsForPhase(phase)}
+                </div>
+            `;
+        }).join("");
+    }
+
+    table.querySelectorAll(".checklist-row button").forEach((button) => {
+        button.addEventListener("click", () => {
+            const row = button.closest(".checklist-row");
+            const phaseId = row.dataset.phase;
+            const taskIndex = Number(row.dataset.index);
+            setTaskDone(phaseId, taskIndex, !getTaskDone(phaseId, taskIndex));
+            renderAll();
+        });
+    });
+}
+
+function renderTypeTabs() {
+    const tabs = document.getElementById("typeTabs");
+    tabs.innerHTML = "";
+
+    Object.entries(PROJECT_TYPES).forEach(([key, type]) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `type-tab ${state.selectedType === key ? "active" : ""}`;
+        button.textContent = type.label;
+        button.addEventListener("click", () => {
+            state.selectedType = key;
+            saveState();
+            renderResources();
+            renderTypeTabs();
+        });
+        tabs.appendChild(button);
+    });
+}
+
+function renderResources() {
+    const type = PROJECT_TYPES[state.selectedType];
+    document.getElementById("resourceHeading").textContent = `Resources (${type.label})`;
+
+    const list = document.getElementById("resourceList");
+    list.innerHTML = type.resources
+        .map((resource) => `<li><span class="resource-bullet"></span><span>${resource}</span></li>`)
+        .join("");
+
+    const resourceSections = document.getElementById("resourceSections");
+    resourceSections.innerHTML = `
+        <article class="resource-card">
+            <h3>${type.label} Resources</h3>
+            <ul>${type.resources.map((resource) => `<li>${resource}</li>`).join("")}</ul>
+        </article>
+        <article class="resource-card">
+            <h3>Milestone Resources</h3>
+            <ul>
+                <li>Design review preparation checklist</li>
+                <li>Implementation readiness rubric</li>
+                <li>Testing log template</li>
+                <li>Final presentation rehearsal guide</li>
+            </ul>
+        </article>
     `;
-    examples.classList.add('open');
 }
 
-// ── Render: Comparison & AI Rules ─────────────────────────────
-// These are static HTML sections, no JS needed for initial render
+function renderTimeline() {
+    const timelineList = document.getElementById("timelineList");
+    timelineList.innerHTML = PHASES.map((phase) => {
+        const statusLabel =
+            phase.status === "done" ? "Complete" : phase.status === "current" ? "Current" : "Upcoming";
 
-// ── Main Render ───────────────────────────────────────────────
+        return `
+            <article class="timeline-card ${phase.status}">
+                <div class="timeline-step">${phase.number}</div>
+                <div class="timeline-meta">
+                    <h3>${phase.fullTitle}</h3>
+                    <p>${phase.subtitle}</p>
+                    <ul>${phase.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
+                </div>
+                <div>
+                    <div class="timeline-status">${statusLabel}</div>
+                    <p class="muted">${phase.dates}</p>
+                </div>
+            </article>
+        `;
+    }).join("");
+}
+
+function renderStatusNote() {
+    const overall = getOverallCompletion();
+    const title = document.getElementById("statusTitle");
+    const copy = document.getElementById("statusCopy");
+
+    if (overall.percent < 40) {
+        title.textContent = "Keep going!";
+        copy.textContent = "You're making great progress. Focus on completing your phase tasks and preparing for your next milestone.";
+    } else if (overall.percent < 80) {
+        title.textContent = "Solid momentum";
+        copy.textContent = "The project is moving well. Keep the scope tight and clear the highest-risk work first.";
+    } else {
+        title.textContent = "Nearly finished";
+        copy.textContent = "You're close to the end. Shift attention to polish, testing, and presentation readiness.";
+    }
+}
+
+function renderViewToggle() {
+    const thisPhaseButton = document.getElementById("viewThisPhase");
+    const allPhasesButton = document.getElementById("viewAllPhases");
+    thisPhaseButton.classList.toggle("active", state.checklistView === "this-phase");
+    allPhasesButton.classList.toggle("active", state.checklistView === "all-phases");
+}
+
+function bindControls() {
+    document.getElementById("viewThisPhase").addEventListener("click", () => {
+        state.checklistView = "this-phase";
+        saveState();
+        renderAll();
+    });
+
+    document.getElementById("viewAllPhases").addEventListener("click", () => {
+        state.checklistView = "all-phases";
+        saveState();
+        renderAll();
+    });
+}
+
 function renderAll() {
-    const dates = loadDates();
-    document.getElementById('launchDateInput').value = dates.launch;
-    document.getElementById('finalDateInput').value = dates.final;
-
-    const phases = getPhases(dates.launch, dates.final);
-    const currentIndex = getCurrentPhaseIndex(phases);
-
-    renderHero(phases, currentIndex);
-    renderRoadmap(phases, currentIndex);
-    renderTimeline(phases, currentIndex);
-    renderProjectTypes();
+    renderCurrentPhase();
+    renderProgress();
+    renderRoadmap();
+    renderChecklist();
+    renderViewToggle();
+    renderTypeTabs();
+    renderResources();
+    renderTimeline();
+    renderStatusNote();
 }
 
-// ── Init ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    bindControls();
     renderAll();
-
-    // Expose globals for inline handlers
-    window.saveDates = saveDates;
-    window.togglePhase = togglePhase;
-    window.onTaskCheck = onTaskCheck;
-    window.showTypeExamples = showTypeExamples;
 });
