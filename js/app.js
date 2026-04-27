@@ -1,136 +1,213 @@
-const STORAGE_KEY = "cs-final-project-tracker-v2";
+const MILESTONE_2_SLIDES = [
+    {
+        slide: 1,
+        title: "Milestone 2",
+        body: "Scope Lock + First GitHub Repo",
+        notes: "Today is about making the project smaller, clearer, and easier to build."
+    },
+    {
+        slide: 2,
+        title: "Today's Two Goals",
+        body: "1. Lock your project plan\n2. Give your project a home",
+        notes: "By the end, every student should know what they are building and where the project will live."
+    },
+    {
+        slide: 3,
+        title: "The Scope Rule",
+        body: "One archetype\nOne core feature\nOne clear data flow",
+        notes: "A good project is not the biggest idea. It is the smallest version you can build, explain, test, and present."
+    },
+    {
+        slide: 4,
+        title: "Two Approved Archetypes",
+        body: "Personal Tracker\nSmart Lookup Tool",
+        notes: "Do not add new project types today. Students must fit their idea into one of these two buckets."
+    },
+    {
+        slide: 5,
+        title: "What I Am Checking",
+        body: "Archetype\nCore feature\nInteraction flow\nData structure\nFunctions",
+        notes: "I am checking whether the plan is buildable, not whether it sounds impressive."
+    },
+    {
+        slide: 6,
+        title: "Project Status",
+        body: "Green — Ready to build\nYellow — Revise first\nRed — Too unclear or too large",
+        notes: "Green means approved. Yellow means close. Red means we need to shrink or clarify the idea."
+    },
+    {
+        slide: 7,
+        title: "Git vs GitHub",
+        body: "Git remembers versions\nGitHub stores and shares projects online",
+        notes: "Keep this simple. Git is the memory system. GitHub is the online home."
+    },
+    {
+        slide: 8,
+        title: "Plain Language Terms",
+        body: "Repository — Project folder online\nCommit — Saved checkpoint\nREADME — Project explanation\nCLI — Control by typing",
+        notes: "Do not teach commands yet. Students only need the vocabulary today."
+    },
+    {
+        slide: 9,
+        title: "Project Home Flow",
+        body: "Laptop folder → Git remembers → GitHub shares\nCLI controls by text",
+        notes: "Use this as the mental model. Their code starts on the laptop, then GitHub becomes the shared project home."
+    },
+    {
+        slide: 10,
+        title: "First GitHub Task",
+        body: "Create repo\nAdd README\nUpload current files\nCopy repo link",
+        notes: "This is setup only. Students should not start coding before their plan is approved."
+    },
+    {
+        slide: 11,
+        title: "While You Wait",
+        body: "Look at examples\nPeer check your PRD\nRevise your plan\nJoin the teacher queue",
+        notes: "Students should stay productive while I review plans one by one."
+    },
+    {
+        slide: 12,
+        title: "Exit Ticket",
+        body: "Status\nFinal MVP\nNext coding step\nGitHub repo plan",
+        notes: "This tells me who is ready, who needs revision, and who needs GitHub help next class."
+    },
+    {
+        slide: 13,
+        title: "Reminder",
+        body: "Small and working\nbeats\nbig and broken",
+        notes: "End calm and practical. The goal is a project they can finish and explain."
+    }
+];
+
+const STORAGE_KEY = "cs-final-project-tracker-v3";
 
 const PHASES = [
     {
-        id: "ideation",
+        id: "milestone-1",
         number: 1,
-        title: "Ideation",
-        fullTitle: "1. Ideation",
-        subtitle: "Define the problem and settle on a project direction.",
-        dates: "Apr 28 - May 11, 2025",
-        shortDates: "Apr 28 - May 11",
+        title: "Launch",
+        fullTitle: "Milestone 1. Project Launch",
+        subtitle: "Choose a direction and draft your first mini PRD.",
+        dates: "Class 1",
+        shortDates: "Class 1",
         status: "done",
         tasks: [
-            { label: "Identify a project problem worth solving", date: "Apr 28", done: true },
-            { label: "Research examples and constraints", date: "Apr 30", done: true },
-            { label: "List possible solution ideas", date: "May 2", done: true },
-            { label: "Compare ideas and choose one direction", date: "May 5", done: true },
-            { label: "Write a one-paragraph project pitch", date: "May 8", done: true },
-            { label: "Confirm project scope with teacher", date: "May 11", done: true }
+            { label: "Read the final project overview", date: "Done", done: true },
+            { label: "Review the project menu", date: "Done", done: true },
+            { label: "Draft a mini PRD plan", date: "Done", done: true },
+            { label: "Bring the plan to class for review", date: "Done", done: true }
         ],
-        highlights: ["Problem statement approved", "Project idea selected"]
+        highlights: ["Mini PRD drafted", "Ready for teacher review"]
     },
     {
-        id: "design",
+        id: "milestone-2",
         number: 2,
-        title: "Design",
-        fullTitle: "2. Design",
-        subtitle: "You're designing the solution and planning how everything will work.",
-        dates: "May 12 - May 25, 2025",
-        shortDates: "May 12 - May 25",
+        title: "Scope Lock",
+        fullTitle: "Milestone 2. Mini PRD Scope Lock",
+        subtitle: "Get your project approved, shrunk, or redirected before coding.",
+        dates: "Next class",
+        shortDates: "Milestone 2",
         status: "current",
-        milestone: "Design Review  •  May 19, 2025",
-        timeRemaining: "6 days",
-        phasePercent: 60,
+        milestone: "Approved Mini PRD  •  Submit to Canvas",
+        timeRemaining: "Today",
+        phasePercent: 35,
         tasks: [
-            { label: "Define problem and project goals", date: "May 12", done: true },
-            { label: "Brainstorm and evaluate ideas", date: "May 13", done: true },
-            { label: "Create project plan", date: "May 14", done: false },
-            { label: "Design system architecture / structure", date: "May 18", done: false },
-            { label: "Design user interface / experience", date: "May 21", done: false },
-            { label: "Prepare for design review", date: "May 19", done: false }
+            { label: "Choose one archetype: Personal Tracker or Smart Lookup Tool", date: "Start", done: false },
+            { label: "Choose one variation from the project menu", date: "Start", done: false },
+            { label: "Write one clear interaction flow", date: "Work time", done: false },
+            { label: "Write one example data structure", date: "Work time", done: false },
+            { label: "List 3-5 planned functions", date: "Work time", done: false },
+            { label: "Get Green, Yellow, or Red teacher status", date: "Review", done: false },
+            { label: "Submit revised Mini PRD to Canvas", date: "Exit", done: false }
         ],
-        highlights: ["Goals locked", "System plan in progress"]
+        highlights: ["One archetype", "One core feature", "One clear data flow"]
     },
     {
-        id: "implementation",
+        id: "milestone-3",
         number: 3,
-        title: "Implementation",
-        fullTitle: "3. Implementation",
-        subtitle: "Build the core features and validate the main workflow.",
-        dates: "May 26 - Jun 22, 2025",
-        shortDates: "May 26 - Jun 22",
+        title: "Prototype",
+        fullTitle: "Milestone 3. First Working Prototype",
+        subtitle: "Build the smallest approved version and make it run.",
+        dates: "After approval",
+        shortDates: "Prototype",
         status: "upcoming",
         tasks: [
-            { label: "Set up the project repository and structure", date: "May 26", done: false },
-            { label: "Build the primary user flow", date: "May 30", done: false },
-            { label: "Implement data storage or state logic", date: "Jun 4", done: false },
-            { label: "Connect supporting views and navigation", date: "Jun 10", done: false },
-            { label: "Test the core path end to end", date: "Jun 16", done: false }
+            { label: "Create project folder and main.py", date: "Next", done: false },
+            { label: "Write a runnable skeleton", date: "Next", done: false },
+            { label: "Build the approved core feature", date: "Build", done: false },
+            { label: "Test with normal input", date: "Build", done: false },
+            { label: "Save one working version", date: "Build", done: false }
         ],
-        highlights: ["Core build", "Feature completion"]
+        highlights: ["Code runs", "Core feature works"]
     },
     {
-        id: "testing",
+        id: "milestone-4",
         number: 4,
-        title: "Testing",
-        fullTitle: "4. Testing",
-        subtitle: "Find issues, refine the experience, and make the project stable.",
-        dates: "Jun 23 - Jul 6, 2025",
-        shortDates: "Jun 23 - Jul 6",
+        title: "Test",
+        fullTitle: "Milestone 4. Test and Fix",
+        subtitle: "Break the prototype on purpose, then fix the highest-risk bugs.",
+        dates: "After prototype",
+        shortDates: "Test",
         status: "upcoming",
         tasks: [
-            { label: "Run usability and bug-testing sessions", date: "Jun 24", done: false },
-            { label: "Fix critical bugs and polish rough edges", date: "Jun 28", done: false },
-            { label: "Improve error handling and empty states", date: "Jul 2", done: false },
-            { label: "Prepare test evidence and notes", date: "Jul 6", done: false }
+            { label: "Ask a partner to test your app", date: "Test", done: false },
+            { label: "Try bad input and edge cases", date: "Test", done: false },
+            { label: "Fix at least one crash or wrong output", date: "Fix", done: false },
+            { label: "Record what changed in your iteration log", date: "Fix", done: false }
         ],
-        highlights: ["Bug fixing", "Polish pass"]
+        highlights: ["Bug report", "Evidence of iteration"]
     },
     {
-        id: "finalization",
+        id: "milestone-5",
         number: 5,
-        title: "Finalization",
-        fullTitle: "5. Finalization",
-        subtitle: "Package the work, rehearse the demo, and submit the project.",
-        dates: "Jul 7 - Jul 20, 2025",
-        shortDates: "Jul 7 - Jul 20",
+        title: "Refine",
+        fullTitle: "Milestone 5. Final Package",
+        subtitle: "Polish what works, explain your code, and prepare the demo.",
+        dates: "Final week",
+        shortDates: "Final",
         status: "upcoming",
         tasks: [
-            { label: "Finalize documentation and README", date: "Jul 8", done: false },
-            { label: "Record or rehearse the final presentation", date: "Jul 12", done: false },
-            { label: "Submit project files and reflection", date: "Jul 17", done: false },
-            { label: "Deliver the final presentation", date: "Jul 20", done: false }
+            { label: "Write README instructions", date: "Polish", done: false },
+            { label: "Clean up names, comments, and dead code", date: "Polish", done: false },
+            { label: "Prepare AI prompt and iteration logs", date: "Submit", done: false },
+            { label: "Practice explaining one function", date: "Demo", done: false },
+            { label: "Submit final package to Canvas", date: "Submit", done: false }
         ],
-        highlights: ["Submission", "Final presentation"]
+        highlights: ["README", "Presentation-ready demo"]
     }
 ];
 
 const PROJECT_TYPES = {
-    app: {
-        label: "App",
+    tracker: {
+        label: "Personal Tracker",
         resources: [
-            "App Project Guide",
-            "UI Design Best Practices",
-            "Data & Storage Options",
-            "API Integration Checklist"
+            "Project Menu: Option A",
+            "Constrained PRD Template",
+            "JSON data example",
+            "Canvas Milestone 2"
+        ],
+        pythonLibs: [
+            { name: "json / csv", use: "Save and load habit, mood, or expense data locally" },
+            { name: "datetime", use: "Track dates, streaks, deadlines, and schedules" },
+            { name: "rich", use: "Print clean tables, progress bars, and colored output in the terminal" },
+            { name: "matplotlib", use: "Draw simple charts for streaks or totals over time" },
+            { name: "os / pathlib", use: "Manage files and folders where data is stored" }
         ]
     },
-    game: {
-        label: "Game",
+    lookup: {
+        label: "Smart Lookup Tool",
         resources: [
-            "Game Loop Planning Guide",
-            "Level Design Checklist",
-            "Player Feedback Patterns",
-            "Game Testing Session Template"
-        ]
-    },
-    research: {
-        label: "Research",
-        resources: [
-            "Question Framing Worksheet",
-            "Source Evaluation Guide",
-            "Data Collection Template",
-            "Presentation Storyline Outline"
-        ]
-    },
-    other: {
-        label: "Other",
-        resources: [
-            "Project Scope Checklist",
-            "Milestone Planning Template",
-            "Teacher Review Prep",
-            "Final Demo Readiness Guide"
+            "Project Menu: Option B",
+            "Constrained PRD Template",
+            "AI Prompt Formula",
+            "Canvas Milestone 2"
+        ],
+        pythonLibs: [
+            { name: "requests", use: "Fetch live data from APIs (weather, words, currency, etc.)" },
+            { name: "json", use: "Parse API responses and local data files" },
+            { name: "difflib", use: "Fuzzy matching when the user typo’s a search term" },
+            { name: "re", use: "Pattern matching and text extraction" },
+            { name: "csv / pandas", use: "Read and filter large local datasets" }
         ]
     }
 };
@@ -149,13 +226,18 @@ function loadState() {
     });
 
     return {
-        selectedType: "app",
+        selectedType: "tracker",
         checklistView: "this-phase",
         checklist
     };
 }
 
 let state = loadState();
+
+if (!PROJECT_TYPES[state.selectedType]) {
+    state.selectedType = "tracker";
+    saveState();
+}
 
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -342,10 +424,21 @@ function renderResources() {
         <article class="resource-card">
             <h3>Milestone Resources</h3>
             <ul>
-                <li>Design review preparation checklist</li>
-                <li>Implementation readiness rubric</li>
-                <li>Testing log template</li>
-                <li>Final presentation rehearsal guide</li>
+                <li>Milestone 2 Canvas page</li>
+                <li>Project Menu</li>
+                <li>Mini PRD work packet</li>
+                <li>AI prompt formula</li>
+            </ul>
+        </article>
+        <article class="resource-card lib-card">
+            <h3>Python Libraries — ${type.label}</h3>
+            <ul class="lib-list">
+                ${type.pythonLibs.map((lib) => `
+                    <li>
+                        <code>${lib.name}</code>
+                        <span>${lib.use}</span>
+                    </li>
+                `).join("")}
             </ul>
         </article>
     `;
@@ -412,6 +505,21 @@ function bindControls() {
     });
 }
 
+function renderSlides() {
+    const deck = document.getElementById("slideDeck");
+    if (!deck) return;
+    deck.innerHTML = MILESTONE_2_SLIDES.map((s) => `
+        <article class="slide-card">
+            <div class="slide-number">Slide ${s.slide}</div>
+            <h3>${s.title}</h3>
+            <div class="slide-body">${s.body.replace(/\n/g, "<br>")}</div>
+            <div class="slide-notes">
+                <strong>Speaker notes:</strong> ${s.notes}
+            </div>
+        </article>
+    `).join("");
+}
+
 function renderAll() {
     renderCurrentPhase();
     renderProgress();
@@ -422,6 +530,7 @@ function renderAll() {
     renderResources();
     renderTimeline();
     renderStatusNote();
+    renderSlides();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
