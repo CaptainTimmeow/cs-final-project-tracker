@@ -96,68 +96,128 @@ const PHASES = [
     }
 ];
 
-const PROJECT_TYPES = {
-    trackers: {
-        label: "Trackers & Planners",
-        ideas: ["Habit tracker", "Expense tracker", "Study planner", "Workout log", "Mood diary"],
-        resources: [
-            "JSON / CSV for data storage",
-            "datetime for dates & streaks",
-            "rich for terminal tables",
-            "matplotlib for charts"
-        ],
+const PROJECT_MENU = [
+    {
+        id: "habit-tracker",
+        name: "The \"I Keep Forgetting\" Habit Tracker",
+        shortName: "Habit Tracker",
+        pitch: "Log daily habits and see how many days in a row you've kept them.",
+        difficulty: "Easy",
+        concepts: ["json", "datetime", "loops"],
+        preview: `What habit? Drink water
+Did you do it today? yes
+Streak: 5 days 🔥
+Keep it up!`,
+        examples: [
+            { name: "Beginner CLI Projects", url: "https://github.com/tomi3-11/Python-beginner-CLI-projects" }
+        ]
+    },
+    {
+        id: "expense-logger",
+        name: "The \"Where Did My Money Go?\" Expense Logger",
+        shortName: "Expense Logger",
+        pitch: "Track what you buy and how much you spend. See your weekly total.",
+        difficulty: "Easy",
+        concepts: ["csv", "loops", "matplotlib"],
+        preview: `What did you buy? Coffee
+How much? 25
+Saved! Total this week: $143`,
         examples: [
             { name: "Expense Tracker CLI", url: "https://github.com/Alvix11/Expense-Tracker-CLI" },
-            { name: "Python Expense Tracker", url: "https://github.com/suphawadeeth/expense_tracker" },
-            { name: "Beginner CLI Projects (habit, budget)", url: "https://github.com/tomi3-11/Python-beginner-CLI-projects" }
+            { name: "Python Expense Tracker", url: "https://github.com/suphawadeeth/expense_tracker" }
         ]
     },
-    tools: {
-        label: "Tools & Helpers",
-        ideas: ["Calculator", "Unit converter", "Password generator", "Flashcards", "File organizer"],
-        resources: [
-            "random for generators",
-            "os / pathlib for files",
-            "json for settings storage",
-            "re for pattern matching"
-        ],
+    {
+        id: "meal-picker",
+        name: "The \"What Should I Eat?\" Meal Picker",
+        shortName: "Meal Picker",
+        pitch: "Can't decide what to eat? Let your app pick a random meal from your favorites.",
+        difficulty: "Easy",
+        concepts: ["random", "lists", "json"],
+        preview: `Press Enter to pick a meal...
+Tonight: Pizza 🍕`,
         examples: [
-            { name: "Python Beginner Projects (calc, password)", url: "https://github.com/Mmabiaa/Python_Beginner_Projects" },
-            { name: "Python Mini Projects", url: "https://github.com/ndleah/python-mini-project" },
-            { name: "Project-Based Learning", url: "https://github.com/practical-tutorials/project-based-learning#python" }
+            { name: "Python Beginner Projects", url: "https://github.com/Mmabiaa/Python_Beginner_Projects" }
         ]
     },
-    games: {
-        label: "Games & Stories",
-        ideas: ["Text adventure", "Number guessing", "Quiz game", "Hangman", "Word puzzle"],
-        resources: [
-            "random for game logic",
-            "time for delays & timers",
-            "json for saving progress",
-            "rich for styled output"
-        ],
+    {
+        id: "password-gen",
+        name: "The \"I Forgot My Password Again\" Generator",
+        shortName: "Password Generator",
+        pitch: "Create strong, random passwords and save them with the website name.",
+        difficulty: "Easy",
+        concepts: ["random", "string", "json"],
+        preview: `Website? Netflix
+Password: xK9#mP2$vL
+Save? yes`,
+        examples: [
+            { name: "Python Beginner Projects", url: "https://github.com/Mmabiaa/Python_Beginner_Projects" }
+        ]
+    },
+    {
+        id: "quiz-app",
+        name: "The \"Test My Friends\" Quiz App",
+        shortName: "Quiz App",
+        pitch: "Make a multiple-choice quiz on any topic and score your friends.",
+        difficulty: "Medium",
+        concepts: ["dictionaries", "loops", "input"],
+        preview: `Q1: What is 2+2?
+  1) 3  2) 4  3) 5
+Your answer: 2
+Correct! Score: 1/1`,
+        examples: [
+            { name: "Quiz Game", url: "https://github.com/randilt/quiz-game" },
+            { name: "Python Simple Games", url: "https://github.com/Su-creator-spec/games-using-python" }
+        ]
+    },
+    {
+        id: "adventure-game",
+        name: "The \"Choose Your Own Adventure\" Story Game",
+        shortName: "Story Game",
+        pitch: "Write a story where the player picks what happens next.",
+        difficulty: "Medium",
+        concepts: ["conditionals", "functions", "dictionaries"],
+        preview: `You enter a dark cave.
+1) Go left
+2) Go right
+Choose: 1
+You find treasure!`,
         examples: [
             { name: "Text Adventure Tutorial", url: "https://github.com/Kyle-L/Text-Adventure-Tutorial" },
-            { name: "Python Simple Games", url: "https://github.com/Su-creator-spec/games-using-python" },
-            { name: "Quiz Game", url: "https://github.com/randilt/quiz-game" }
+            { name: "Python Simple Games", url: "https://github.com/Su-creator-spec/games-using-python" }
         ]
     },
-    lookup: {
-        label: "Lookup & Data",
-        ideas: ["Weather lookup", "Dictionary", "Recipe finder", "Currency converter", "Movie search"],
-        resources: [
-            "requests for APIs",
-            "json for parsing data",
-            "csv / pandas for datasets",
-            "difflib for fuzzy search"
-        ],
+    {
+        id: "weather-checker",
+        name: "The \"Is It Raining?\" Weather Checker",
+        shortName: "Weather Checker",
+        pitch: "Type a city name and get the current weather from the internet.",
+        difficulty: "Medium",
+        concepts: ["requests", "json", "APIs"],
+        preview: `City? Tokyo
+Tokyo: 24°C, partly cloudy
+Humidity: 60%`,
         examples: [
             { name: "Open-Meteo Weather", url: "https://github.com/m0rp43us/openmeteopy" },
-            { name: "Awesome Python Project Ideas", url: "https://github.com/Ritesh-456/awesome-python-project-ideas" },
+            { name: "Awesome Python Ideas", url: "https://github.com/Ritesh-456/awesome-python-project-ideas" }
+        ]
+    },
+    {
+        id: "movie-picker",
+        name: "The \"I Can't Decide\" Movie Picker",
+        shortName: "Movie Picker",
+        pitch: "Store your favorite movies and let the app pick one when you can't choose.",
+        difficulty: "Easy",
+        concepts: ["random", "lists", "json"],
+        preview: `Add movie: Inception
+Add movie: The Matrix
+Pick random → Watch: The Matrix`,
+        examples: [
+            { name: "Python Mini Projects", url: "https://github.com/ndleah/python-mini-project" },
             { name: "Karan's Projects List", url: "https://github.com/karan/Projects" }
         ]
     }
-};
+];
 
 function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -173,7 +233,7 @@ function loadState() {
     });
 
     return {
-        selectedType: "trackers",
+        selectedProject: PROJECT_MENU[0].id,
         checklistView: "this-phase",
         checklist
     };
@@ -181,8 +241,9 @@ function loadState() {
 
 let state = loadState();
 
-if (!PROJECT_TYPES[state.selectedType]) {
-    state.selectedType = "trackers";
+const hasValidProject = PROJECT_MENU.some((p) => p.id === state.selectedProject);
+if (!hasValidProject) {
+    state.selectedProject = PROJECT_MENU[0].id;
     saveState();
 }
 
@@ -334,54 +395,62 @@ function renderChecklist() {
     });
 }
 
-function renderTypeTabs() {
-    const tabs = document.getElementById("typeTabs");
-    tabs.innerHTML = "";
+function renderProjectMenu() {
+    const menu = document.getElementById("typeTabs");
+    menu.innerHTML = "";
+    menu.className = "project-menu";
 
-    Object.entries(PROJECT_TYPES).forEach(([key, type]) => {
+    PROJECT_MENU.forEach((project) => {
         const button = document.createElement("button");
         button.type = "button";
-        button.className = `type-tab ${state.selectedType === key ? "active" : ""}`;
-        button.textContent = type.label;
+        button.className = `project-menu-item ${state.selectedProject === project.id ? "active" : ""}`;
+        button.innerHTML = `
+            <span class="project-menu-name">${project.shortName}</span>
+            <span class="project-menu-difficulty">${project.difficulty}</span>
+        `;
         button.addEventListener("click", () => {
-            state.selectedType = key;
+            state.selectedProject = project.id;
             saveState();
             renderResources();
-            renderTypeTabs();
+            renderProjectMenu();
         });
-        tabs.appendChild(button);
+        menu.appendChild(button);
     });
 }
 
+function getSelectedProject() {
+    return PROJECT_MENU.find((p) => p.id === state.selectedProject) || PROJECT_MENU[0];
+}
+
 function renderResources() {
-    const type = PROJECT_TYPES[state.selectedType];
-    document.getElementById("resourceHeading").textContent = `Resources (${type.label})`;
+    const project = getSelectedProject();
+    document.getElementById("resourceHeading").textContent = project.name;
 
     const list = document.getElementById("resourceList");
-    list.innerHTML = type.resources
-        .map((resource) => `<li><span class="resource-bullet"></span><span>${resource}</span></li>`)
+    list.innerHTML = project.concepts
+        .map((concept) => `<li><span class="resource-bullet"></span><span>${concept}</span></li>`)
         .join("");
 
     const resourceSections = document.getElementById("resourceSections");
     resourceSections.innerHTML = `
-        <article class="resource-card">
-            <h3>${type.label}</h3>
-            <p style="margin:0 0 10px;color:var(--muted);font-size:14px;">${type.ideas.join(" · ")}</p>
-            <ul>${type.resources.map((resource) => `<li>${resource}</li>`).join("")}</ul>
-        </article>
-        <article class="resource-card">
-            <h3>Milestone Resources</h3>
-            <ul>
-                <li>Milestone 2 Canvas page</li>
-                <li>Project Menu</li>
-                <li>Mini PRD work packet</li>
-                <li>AI prompt formula</li>
-            </ul>
+        <article class="resource-card project-detail">
+            <div class="project-detail-header">
+                <h3>${project.name}</h3>
+                <span class="project-badge">${project.difficulty}</span>
+            </div>
+            <p class="project-pitch">${project.pitch}</p>
+            <div class="terminal-preview">
+                <div class="terminal-bar">Terminal</div>
+                <pre>${project.preview}</pre>
+            </div>
+            <div class="project-meta">
+                <strong>Key concepts:</strong> ${project.concepts.join(", ")}
+            </div>
         </article>
         <article class="resource-card example-card">
             <h3>Online Examples</h3>
             <ul class="example-list">
-                ${type.examples.map((ex) => `
+                ${project.examples.map((ex) => `
                     <li>
                         <a href="${ex.url}" target="_blank" rel="noopener">${ex.name}</a>
                         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6"/></svg>
@@ -389,7 +458,36 @@ function renderResources() {
                 `).join("")}
             </ul>
         </article>
+        <article class="resource-card">
+            <h3>Milestone Resources</h3>
+            <ul>
+                <li>Milestone 2 Canvas page</li>
+                <li>Mini PRD work packet</li>
+                <li>AI prompt formula</li>
+            </ul>
+        </article>
+        <article class="resource-card project-grid-card" style="grid-column: 1 / -1;">
+            <h3>Browse All Projects</h3>
+            <div class="project-grid">
+                ${PROJECT_MENU.map((p) => `
+                    <button class="project-grid-item ${p.id === project.id ? "active" : ""}" data-id="${p.id}" type="button">
+                        <div class="project-grid-name">${p.shortName}</div>
+                        <div class="project-grid-difficulty">${p.difficulty}</div>
+                    </button>
+                `).join("")}
+            </div>
+        </article>
     `;
+
+    resourceSections.querySelectorAll(".project-grid-item").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state.selectedProject = btn.dataset.id;
+            saveState();
+            renderResources();
+            renderProjectMenu();
+            window.location.href = "#resources";
+        });
+    });
 }
 
 function renderTimeline() {
@@ -460,7 +558,7 @@ function renderAll() {
     renderRoadmap();
     renderChecklist();
     renderViewToggle();
-    renderTypeTabs();
+    renderProjectMenu();
     renderResources();
     renderTimeline();
     renderStatusNote();

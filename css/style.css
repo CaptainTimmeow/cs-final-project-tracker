@@ -843,6 +843,167 @@ svg {
     color: #666666;
 }
 
+/* Project menu (sidebar) */
+.project-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.project-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.project-menu-item:hover {
+    border-color: var(--line-strong);
+}
+
+.project-menu-item.active {
+    background: #111111;
+    border-color: #111111;
+    color: #ffffff;
+}
+
+.project-menu-item.active .project-menu-difficulty {
+    color: #cccccc;
+}
+
+.project-menu-name {
+    font-weight: 500;
+}
+
+.project-menu-difficulty {
+    font-size: 12px;
+    color: #888883;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Project detail card */
+.project-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.project-detail-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.project-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.project-pitch {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.terminal-preview {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.terminal-bar {
+    padding: 8px 14px;
+    background: #2a2a2a;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888883;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.terminal-preview pre {
+    margin: 0;
+    padding: 14px 16px;
+    color: #e8e8e4;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    overflow-x: auto;
+}
+
+.project-meta {
+    font-size: 14px;
+    color: #555555;
+}
+
+.project-meta strong {
+    color: #1a1a1a;
+}
+
+/* Project browse grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.project-grid-item {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+    cursor: pointer;
+    text-align: left;
+}
+
+.project-grid-item:hover {
+    border-color: var(--line-strong);
+}
+
+.project-grid-item.active {
+    background: #111111;
+    border-color: #111111;
+    color: #ffffff;
+}
+
+.project-grid-item.active .project-grid-difficulty {
+    color: #aaaaaa;
+}
+
+.project-grid-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.project-grid-difficulty {
+    font-size: 11px;
+    color: #888883;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
 @media (max-width: 1080px) {
     .dashboard-grid,
     .lower-grid,
