@@ -273,9 +273,9 @@ function renderRoadmap() {
     PHASES.forEach((phase) => {
         const item = document.createElement("div");
         item.className = `roadmap-item ${phase.status}`;
+        const nodeContent = phase.status === "done" ? "✓" : phase.number;
         item.innerHTML = `
-            <div class="roadmap-node">${phase.number}</div>
-            ${phase.status === "done" ? '<div class="roadmap-check">✓</div>' : ""}
+            <div class="roadmap-node">${nodeContent}</div>
             <div class="roadmap-name">${phase.title}</div>
             <div class="roadmap-date">${phase.shortDates}</div>
         `;
@@ -398,9 +398,10 @@ function renderTimeline() {
         const statusLabel =
             phase.status === "done" ? "Complete" : phase.status === "current" ? "Current" : "Upcoming";
 
+        const stepContent = phase.status === "done" ? "✓" : phase.number;
         return `
             <article class="timeline-card ${phase.status}">
-                <div class="timeline-step">${phase.number}</div>
+                <div class="timeline-step">${stepContent}</div>
                 <div class="timeline-meta">
                     <h3>${phase.fullTitle}</h3>
                     <p>${phase.subtitle}</p>

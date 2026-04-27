@@ -415,8 +415,17 @@ svg {
 }
 
 .roadmap-item.done .roadmap-node {
-    border-color: #111111;
-    color: #111111;
+    background: #e8e8e4;
+    border-color: #b8b8b2;
+    color: #777772;
+}
+
+.roadmap-item.done .roadmap-name {
+    color: #999994;
+}
+
+.roadmap-item.done .roadmap-date {
+    color: #b8b8b2;
 }
 
 .roadmap-item.current .roadmap-node {
@@ -714,7 +723,30 @@ svg {
 }
 
 .timeline-card.done .timeline-step {
-    border-color: #111111;
+    background: #e8e8e4;
+    border-color: #b8b8b2;
+    color: #777772;
+    font-size: 24px;
+}
+
+.timeline-card.done {
+    background: #f3f3f0;
+    border-color: #e0e0db;
+}
+
+.timeline-card.done .timeline-meta h3 {
+    color: #999994;
+}
+
+.timeline-card.done .timeline-meta p,
+.timeline-card.done .timeline-meta ul {
+    color: #b8b8b2;
+}
+
+.timeline-card.done .timeline-status {
+    background: #e8e8e4;
+    border-color: #d5d5d0;
+    color: #888883;
 }
 
 .timeline-status {
