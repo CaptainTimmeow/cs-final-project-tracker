@@ -1,85 +1,4 @@
-const MILESTONE_2_SLIDES = [
-    {
-        slide: 1,
-        title: "Milestone 2",
-        body: "Scope Lock + First GitHub Repo",
-        notes: "Today is about making the project smaller, clearer, and easier to build."
-    },
-    {
-        slide: 2,
-        title: "Today's Two Goals",
-        body: "1. Lock your project plan\n2. Give your project a home",
-        notes: "By the end, every student should know what they are building and where the project will live."
-    },
-    {
-        slide: 3,
-        title: "The Scope Rule",
-        body: "One archetype\nOne core feature\nOne clear data flow",
-        notes: "A good project is not the biggest idea. It is the smallest version you can build, explain, test, and present."
-    },
-    {
-        slide: 4,
-        title: "Two Approved Archetypes",
-        body: "Personal Tracker\nSmart Lookup Tool",
-        notes: "Do not add new project types today. Students must fit their idea into one of these two buckets."
-    },
-    {
-        slide: 5,
-        title: "What I Am Checking",
-        body: "Archetype\nCore feature\nInteraction flow\nData structure\nFunctions",
-        notes: "I am checking whether the plan is buildable, not whether it sounds impressive."
-    },
-    {
-        slide: 6,
-        title: "Project Status",
-        body: "Green — Ready to build\nYellow — Revise first\nRed — Too unclear or too large",
-        notes: "Green means approved. Yellow means close. Red means we need to shrink or clarify the idea."
-    },
-    {
-        slide: 7,
-        title: "Git vs GitHub",
-        body: "Git remembers versions\nGitHub stores and shares projects online",
-        notes: "Keep this simple. Git is the memory system. GitHub is the online home."
-    },
-    {
-        slide: 8,
-        title: "Plain Language Terms",
-        body: "Repository — Project folder online\nCommit — Saved checkpoint\nREADME — Project explanation\nCLI — Control by typing",
-        notes: "Do not teach commands yet. Students only need the vocabulary today."
-    },
-    {
-        slide: 9,
-        title: "Project Home Flow",
-        body: "Laptop folder → Git remembers → GitHub shares\nCLI controls by text",
-        notes: "Use this as the mental model. Their code starts on the laptop, then GitHub becomes the shared project home."
-    },
-    {
-        slide: 10,
-        title: "First GitHub Task",
-        body: "Create repo\nAdd README\nUpload current files\nCopy repo link",
-        notes: "This is setup only. Students should not start coding before their plan is approved."
-    },
-    {
-        slide: 11,
-        title: "While You Wait",
-        body: "Look at examples\nPeer check your PRD\nRevise your plan\nJoin the teacher queue",
-        notes: "Students should stay productive while I review plans one by one."
-    },
-    {
-        slide: 12,
-        title: "Exit Ticket",
-        body: "Status\nFinal MVP\nNext coding step\nGitHub repo plan",
-        notes: "This tells me who is ready, who needs revision, and who needs GitHub help next class."
-    },
-    {
-        slide: 13,
-        title: "Reminder",
-        body: "Small and working\nbeats\nbig and broken",
-        notes: "End calm and practical. The goal is a project they can finish and explain."
-    }
-];
-
-const STORAGE_KEY = "cs-final-project-tracker-v3";
+const STORAGE_KEY = "cs-final-project-tracker-v4";
 
 const PHASES = [
     {
@@ -112,7 +31,7 @@ const PHASES = [
         timeRemaining: "Today",
         phasePercent: 35,
         tasks: [
-            { label: "Choose one archetype: Personal Tracker or Smart Lookup Tool", date: "Start", done: false },
+            { label: "Choose one project inspiration and pick a direction", date: "Start", done: false },
             { label: "Choose one variation from the project menu", date: "Start", done: false },
             { label: "Write one clear interaction flow", date: "Work time", done: false },
             { label: "Write one example data structure", date: "Work time", done: false },
@@ -178,36 +97,64 @@ const PHASES = [
 ];
 
 const PROJECT_TYPES = {
-    tracker: {
-        label: "Personal Tracker",
+    trackers: {
+        label: "Trackers & Planners",
+        ideas: ["Habit tracker", "Expense tracker", "Study planner", "Workout log", "Mood diary"],
         resources: [
-            "Project Menu: Option A",
-            "Constrained PRD Template",
-            "JSON data example",
-            "Canvas Milestone 2"
+            "JSON / CSV for data storage",
+            "datetime for dates & streaks",
+            "rich for terminal tables",
+            "matplotlib for charts"
         ],
-        pythonLibs: [
-            { name: "json / csv", use: "Save and load habit, mood, or expense data locally" },
-            { name: "datetime", use: "Track dates, streaks, deadlines, and schedules" },
-            { name: "rich", use: "Print clean tables, progress bars, and colored output in the terminal" },
-            { name: "matplotlib", use: "Draw simple charts for streaks or totals over time" },
-            { name: "os / pathlib", use: "Manage files and folders where data is stored" }
+        examples: [
+            { name: "Expense Tracker CLI", url: "https://github.com/Alvix11/Expense-Tracker-CLI" },
+            { name: "Python Expense Tracker", url: "https://github.com/suphawadeeth/expense_tracker" },
+            { name: "Beginner CLI Projects (habit, budget)", url: "https://github.com/tomi3-11/Python-beginner-CLI-projects" }
+        ]
+    },
+    tools: {
+        label: "Tools & Helpers",
+        ideas: ["Calculator", "Unit converter", "Password generator", "Flashcards", "File organizer"],
+        resources: [
+            "random for generators",
+            "os / pathlib for files",
+            "json for settings storage",
+            "re for pattern matching"
+        ],
+        examples: [
+            { name: "Python Beginner Projects (calc, password)", url: "https://github.com/Mmabiaa/Python_Beginner_Projects" },
+            { name: "Python Mini Projects", url: "https://github.com/ndleah/python-mini-project" },
+            { name: "Project-Based Learning", url: "https://github.com/practical-tutorials/project-based-learning#python" }
+        ]
+    },
+    games: {
+        label: "Games & Stories",
+        ideas: ["Text adventure", "Number guessing", "Quiz game", "Hangman", "Word puzzle"],
+        resources: [
+            "random for game logic",
+            "time for delays & timers",
+            "json for saving progress",
+            "rich for styled output"
+        ],
+        examples: [
+            { name: "Text Adventure Tutorial", url: "https://github.com/Kyle-L/Text-Adventure-Tutorial" },
+            { name: "Python Simple Games", url: "https://github.com/Su-creator-spec/games-using-python" },
+            { name: "Quiz Game", url: "https://github.com/randilt/quiz-game" }
         ]
     },
     lookup: {
-        label: "Smart Lookup Tool",
+        label: "Lookup & Data",
+        ideas: ["Weather lookup", "Dictionary", "Recipe finder", "Currency converter", "Movie search"],
         resources: [
-            "Project Menu: Option B",
-            "Constrained PRD Template",
-            "AI Prompt Formula",
-            "Canvas Milestone 2"
+            "requests for APIs",
+            "json for parsing data",
+            "csv / pandas for datasets",
+            "difflib for fuzzy search"
         ],
-        pythonLibs: [
-            { name: "requests", use: "Fetch live data from APIs (weather, words, currency, etc.)" },
-            { name: "json", use: "Parse API responses and local data files" },
-            { name: "difflib", use: "Fuzzy matching when the user typo’s a search term" },
-            { name: "re", use: "Pattern matching and text extraction" },
-            { name: "csv / pandas", use: "Read and filter large local datasets" }
+        examples: [
+            { name: "Open-Meteo Weather", url: "https://github.com/m0rp43us/openmeteopy" },
+            { name: "Awesome Python Project Ideas", url: "https://github.com/Ritesh-456/awesome-python-project-ideas" },
+            { name: "Karan's Projects List", url: "https://github.com/karan/Projects" }
         ]
     }
 };
@@ -226,7 +173,7 @@ function loadState() {
     });
 
     return {
-        selectedType: "tracker",
+        selectedType: "trackers",
         checklistView: "this-phase",
         checklist
     };
@@ -235,7 +182,7 @@ function loadState() {
 let state = loadState();
 
 if (!PROJECT_TYPES[state.selectedType]) {
-    state.selectedType = "tracker";
+    state.selectedType = "trackers";
     saveState();
 }
 
@@ -418,7 +365,8 @@ function renderResources() {
     const resourceSections = document.getElementById("resourceSections");
     resourceSections.innerHTML = `
         <article class="resource-card">
-            <h3>${type.label} Resources</h3>
+            <h3>${type.label}</h3>
+            <p style="margin:0 0 10px;color:var(--muted);font-size:14px;">${type.ideas.join(" · ")}</p>
             <ul>${type.resources.map((resource) => `<li>${resource}</li>`).join("")}</ul>
         </article>
         <article class="resource-card">
@@ -430,13 +378,13 @@ function renderResources() {
                 <li>AI prompt formula</li>
             </ul>
         </article>
-        <article class="resource-card lib-card">
-            <h3>Python Libraries — ${type.label}</h3>
-            <ul class="lib-list">
-                ${type.pythonLibs.map((lib) => `
+        <article class="resource-card example-card">
+            <h3>Online Examples</h3>
+            <ul class="example-list">
+                ${type.examples.map((ex) => `
                     <li>
-                        <code>${lib.name}</code>
-                        <span>${lib.use}</span>
+                        <a href="${ex.url}" target="_blank" rel="noopener">${ex.name}</a>
+                        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6"/></svg>
                     </li>
                 `).join("")}
             </ul>
@@ -505,21 +453,6 @@ function bindControls() {
     });
 }
 
-function renderSlides() {
-    const deck = document.getElementById("slideDeck");
-    if (!deck) return;
-    deck.innerHTML = MILESTONE_2_SLIDES.map((s) => `
-        <article class="slide-card">
-            <div class="slide-number">Slide ${s.slide}</div>
-            <h3>${s.title}</h3>
-            <div class="slide-body">${s.body.replace(/\n/g, "<br>")}</div>
-            <div class="slide-notes">
-                <strong>Speaker notes:</strong> ${s.notes}
-            </div>
-        </article>
-    `).join("");
-}
-
 function renderAll() {
     renderCurrentPhase();
     renderProgress();
@@ -530,7 +463,6 @@ function renderAll() {
     renderResources();
     renderTimeline();
     renderStatusNote();
-    renderSlides();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

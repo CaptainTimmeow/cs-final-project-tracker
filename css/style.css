@@ -772,86 +772,43 @@ svg {
     color: var(--muted);
 }
 
-/* Slide deck */
-.slide-deck {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
-}
-
-.slide-card {
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--panel-soft);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.slide-number {
-    font-size: 12px;
-    font-weight: 600;
-    color: #545454;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-}
-
-.slide-card h3 {
+/* Online example cards */
+.example-list {
     margin: 0;
-    font-size: 18px;
-    line-height: 1.25;
+    padding: 0;
+    list-style: none;
 }
 
-.slide-body {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #222222;
-    white-space: pre-line;
-}
-
-.slide-notes {
-    margin-top: 4px;
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.5;
-    font-style: italic;
-}
-
-.slide-notes strong {
-    font-style: normal;
-    color: #444444;
-}
-
-/* Python library cards */
-.lib-card code {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    background: #ecece8;
-    font-size: 13px;
-    font-weight: 600;
-    color: #1a1a1a;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-.lib-list li {
+.example-list li {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     margin-bottom: 12px;
     line-height: 1.45;
 }
 
-.lib-list li:last-child {
+.example-list li:last-child {
     margin-bottom: 0;
 }
 
-.lib-list li span {
+.example-list li a {
     font-size: 14px;
-    color: #555555;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.example-list li a:hover {
+    color: #444444;
+}
+
+.example-list li svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: #666666;
 }
 
 @media (max-width: 1080px) {
@@ -859,10 +816,6 @@ svg {
     .lower-grid,
     .overview-grid,
     .resource-sections {
-        grid-template-columns: 1fr;
-    }
-
-    .slide-deck {
         grid-template-columns: 1fr;
     }
 
