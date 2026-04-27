@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160">
+  <defs>
+    <linearGradient id="gem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c4dff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c084fc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c4dff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Central gem/crystal being polished -->
+  <polygon points="120,45 145,75 120,115 95,75" fill="url(#gem)" opacity="0.9"/>
+  <polygon points="120,45 145,75 120,80 95,75" fill="#a060e0" opacity="0.5"/>
+  <polygon points="95,75 120,80 120,115" fill="#5c3fd4" opacity="0.6"/>
+  <!-- Polish sparkles -->
+  <path d="M70 55 L72 60 L77 62 L72 64 L70 69 L68 64 L63 62 L68 60Z" fill="#ffd700" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M175 50 L176.5 53 L179.5 54 L176.5 55 L175 58 L173.5 55 L170.5 54 L173.5 53Z" fill="#ffd700" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+  <path d="M185 90 L186 92 L188 93 L186 94 L185 96 L184 94 L182 93 L184 92Z" fill="#ffd700" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/>
+  </path>
+  <path d="M55 90 L56 93 L59 94 L56 95 L55 98 L54 95 L51 94 L54 93Z" fill="#ffd700" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+  <!-- Wrench tool -->
+  <path d="M160 110 L175 95" stroke="#8888aa" stroke-width="5" stroke-linecap="round"/>
+  <rect x="165" y="85" width="14" height="14" rx="3" transform="rotate(-45 172 92)" fill="#8888aa"/>
+  <circle cx="172" cy="92" r="4" fill="#0f0f1a"/>
+  <!-- Shine lines on gem -->
+  <line x1="108" y1="65" x2="115" y2="72" stroke="#ffd700" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="125" y1="58" x2="132" y2="65" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Bottom reflection -->
+  <ellipse cx="120" cy="130" rx="30" ry="5" fill="#7c4dff" opacity="0.15"/>
+</svg>
